@@ -1,25 +1,26 @@
 import { CiSearch } from 'react-icons/ci';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 import { IoReturnDownBack } from 'react-icons/io5';
+import { CgHashtag } from 'react-icons/cg';
 import { useRef, useState, useEffect } from 'react';
 import { FiArrowUp, FiArrowDown, FiArrowLeft } from 'react-icons/fi';
 
 import './App.scss';
-import './reset.scss';
-import wallpaper from './assets/wallpaper.jpg';
 import { KeyboardKey, useKeyPress } from './hooks/useKeyDown';
+
+const NO_TAG_TEXT = 'untitled'
+
+const SUGGESTIONS = 'SUGGESTIONS';
+const NO_TAG = 'NO_TAG';
 
 function App() {
   const [focused, setFocused] = useState(false);
   const [inputValue, setInputValue] = useState('');
-  const [suggestionView, setSuggestionView] = useState('NO_TAG');
+  const [suggestionView, setSuggestionView] = useState(SUGGESTIONS);
   const inputRef = useRef(null);
 
   useEffect(() => {
     focused && inputRef.current.focus();
-    focused && setSuggestionView('SUGGESTIONS');
-    // focused && setSuggestionView('NO_TAG');
-    !focused && setSuggestionView(null);
   }, [focused]);
 
   useKeyPress(() => {
@@ -28,6 +29,8 @@ function App() {
 
   const focus = () => {
     setFocused(true);
+    
+    inputValue === NO_TAG_TEXT && setSuggestionView(NO_TAG);
   };
 
   const handleKeyDown = (event) => {
@@ -36,8 +39,7 @@ function App() {
 
   return (
     <div onKeyDown={handleKeyDown}>
-      <img className={'wallpaper'} src={wallpaper} />
-      {true && (
+      {focused && (
         <div className={'spotlight'}>
           <div className={`search-box-container ${focused ? 'search-focused' : null}`}>
             <div className={'search-box'}>
@@ -48,20 +50,19 @@ function App() {
                 placeholder={'Type a command or search'}
                 onFocus={(e) => {
                   setFocused(true);
-                  e.target.value.toLowerCase() === 'u' && setSuggestionView('NO_TAG');
+                  e.target.value.toLowerCase() === NO_TAG_TEXT && setSuggestionView(NO_TAG);
                 }}
                 onBlur={() => {
                   setFocused(false);
                 }}
                 value={inputValue}
                 onChange={(e) => {
-                  console.log('e: ', e.target.value);
                   setInputValue(e.target.value);
-                  if (e.target.value.toLowerCase() === 'u') {
-                    setSuggestionView('NO_TAG');
+                  if (e.target.value.toLowerCase() === NO_TAG_TEXT) {
+                    setSuggestionView(NO_TAG);
                     return
                   }
-                  setSuggestionView('SUGGESTIONS');
+                  setSuggestionView(SUGGESTIONS);
                 }}
               />
               <span className={'command'}>⌘/</span>
@@ -69,12 +70,14 @@ function App() {
             {focused && (
               <>
                 <div className={'suggestions-container'}>
-                  {suggestionView === 'SUGGESTIONS' && (
+                  {suggestionView === SUGGESTIONS && (
                     <>
                       <div className={'suggestion'}>
                         <div className={'suggestion-content'}>
                           {/* Icon */}
-                          <span className={'suggestion-icon'}>#</span>
+                          <span className={'suggestion-icon'}>
+                            <CgHashtag />
+                          </span>
                           {/* Text */}
                           <span className={'suggestion-text'}>Add tag</span>
                         </div>
@@ -99,12 +102,23 @@ function App() {
                       </div>
                     </>
                   )}
-                  {suggestionView === 'NO_TAG' && (
+                  {suggestionView === NO_TAG && (
                     <>
                       <div className={'no-tag-container'}>
                         <div className={'center-icon'}>
                           <div className={'suggestion-icon'}>
                           <span className={'command circle-ripple'}>⌘</span>
+                          </div>
+                        </div>
+                        <div className={'center-content'}>
+                          <div className={'suggestion-title'}>
+                            No tags found
+                          </div>
+                          <div className={'suggestion-subtitle'}>
+                            "{inputValue}" did not match any tags current used in projects. Please try again or <span className={"underlined"}>create a new tag</span>.
+                          </div>
+                          <div className={'suggestion-subtitle'}>
+                            <div className={'command'}>Clear Search</div>
                           </div>
                         </div>
                       </div>
@@ -145,7 +159,7 @@ function App() {
           </div>
         </div>
       )}
-      <div className='help'>Press "." to focus and "u" for ripple view</div>
+      <div className='help'>Press "." to focus and "{NO_TAG_TEXT}" for ripple view</div>
     </div>
   );
 }
