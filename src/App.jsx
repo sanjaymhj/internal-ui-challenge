@@ -10,15 +10,15 @@ import wallpaper from './assets/wallpaper.jpg';
 import { KeyboardKey, useKeyPress } from './hooks/useKeyDown';
 
 function App() {
-  const [focused, setFocused] = useState(true);
+  const [focused, setFocused] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [suggestionView, setSuggestionView] = useState('NO_TAG');
   const inputRef = useRef(null);
 
   useEffect(() => {
     focused && inputRef.current.focus();
-    // focused && setSuggestionView('SUGGESTIONS');
-    focused && setSuggestionView('NO_TAG');
+    focused && setSuggestionView('SUGGESTIONS');
+    // focused && setSuggestionView('NO_TAG');
     !focused && setSuggestionView(null);
   }, [focused]);
 
@@ -48,7 +48,6 @@ function App() {
                 placeholder={'Type a command or search'}
                 onFocus={(e) => {
                   setFocused(true);
-                  console.log('e.target: ', e.target.value);
                   e.target.value.toLowerCase() === 'u' && setSuggestionView('NO_TAG');
                 }}
                 onBlur={() => {
@@ -60,7 +59,9 @@ function App() {
                   setInputValue(e.target.value);
                   if (e.target.value.toLowerCase() === 'u') {
                     setSuggestionView('NO_TAG');
+                    return
                   }
+                  setSuggestionView('SUGGESTIONS');
                 }}
               />
               <span className={'command'}>⌘/</span>
@@ -144,7 +145,7 @@ function App() {
           </div>
         </div>
       )}
-      {/* <div className='logo-ripple '>asdfasdfasd</div> */}
+      <div className='help'>Press "." to focus and "u" for ripple view</div>
     </div>
   );
 }
