@@ -51,7 +51,7 @@ function App() {
                   e.target.value.toLowerCase() === 'u' && setSuggestionView('NO_TAG');
                 }}
                 onBlur={() => {
-                  // setFocused(false);
+                  setFocused(false);
                 }}
                 value={inputValue}
                 onChange={(e) => {
