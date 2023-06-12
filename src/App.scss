@@ -1,0 +1,237 @@
+#root {
+  margin: 0 auto;
+  padding: 0;
+}
+* {
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10.2vw;
+  min-width: 500px;
+  /* height: 100vh; */
+  background: #fafafa;
+}
+
+.wallpaper {
+  width: 99vw;
+  height: 99vh;
+}
+.spotlight {
+  top: 0;
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  top: 20%;
+  border-radius: 15px;
+
+
+  .search-box-container {
+    display: flex;
+    flex: 0.8;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    backdrop-filter: blur(50px);
+    color: white;
+    padding: 10px;
+    max-width: 700px;
+    width: 100%;
+    flex-direction: column;
+
+    .search-box {
+      border-radius: 15px;
+      display: flex;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 10px;
+      font-weight: bold;
+      align-items: center;
+      height: 50px;
+
+      input {
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        background: transparent;
+        border-color: transparent;
+        font-size: 16px;
+        margin: 0 5px 0 5px;
+      }
+
+    }
+  }
+
+  .search-focused {
+    .search-box {
+      border-bottom-right-radius: 0px;
+      border-bottom-left-radius: 0px;
+
+    }
+    .suggestions-container {
+      border-top: #ffffff39 1px solid;
+      display: flex;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 0 10px;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      .suggestion {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        font-size: 16px;
+
+        margin: 3px;
+
+        .suggestion-content {
+          width: 80%;
+        }
+        
+        .suggestion-icon {
+align-items: center;
+flex: 0.1;
+          margin: 0 auto;
+        }
+
+        .suggestion-text {
+          display: inline-block;
+          width: 70%;
+          max-width: 100%;
+          height: 100%;
+          background: transparent;
+          border-color: transparent;
+          font-size: 14px;
+          font-weight: 600;
+          margin: 0 5px 0 5px;
+        }
+      }
+    }
+    .suggestion-footer {
+      border-top: #ffffff39 1px solid;
+      border-radius: 0px 0px 10px 10px;
+      display: flex;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.24);
+      padding: 10px;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: row;
+      height: 50px;
+
+      .command-container {
+        padding-right: 5px;
+      
+        .command {
+          font-size: 13px;
+          line-height: 13px;
+          justify-content: center;
+          align-items: center;
+          padding: 5px 5px;
+
+          // display: flex;
+          // flex-direction: column;
+        }
+        .command-help {
+          font-size: 13px;
+          font-weight: 500;
+          color: #eee;
+          padding: 0 5px 0 5px;
+
+        }
+      }
+    }
+  }
+}
+
+.command {
+  border-radius: 10px;
+  border: #ffffff39 1px solid;
+  padding: 6px 6px;
+  font-size: 15px;
+  line-height: 13px;
+  color: #eaeaea;
+  margin: 3px;
+}
+
+.icon {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 0 5px 0 0;
+}
+
+
+.no-tag-container {
+  overflow: hidden;
+  display: flex;
+  // height: 250px;
+  width: 100%;
+  // flex:1;
+  justify-content: center;
+  align-items: center;
+  // position: absolute;
+  
+  .center-icon {
+    padding-top: 40px;
+    // flex:1
+    
+    border-radius: 50%;
+  }
+}
+
+input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #ccc;
+  opacity: 1; /* Firefox */
+}
+
+input:focus {
+    outline: none;
+}
+
+@keyframes logo-ripple {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(100);
+  }
+}
+
+// Ripple
+$color: #ffffff39;
+$transparent : rgba(255, 255, 255, 0);
+
+.circle-ripple {
+  background-color: transparent;
+  border: $color 1px solid;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  animation: ripple 1.5s linear infinite;
+}
+
+@keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba($transparent, 0.3),
+                0 0 0 1em rgba($transparent, 0.3),
+                0 0 0 3em rgba($transparent, 0.3),
+                0 0 0 5em rgba($transparent, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 1em rgba($transparent, 0.3),
+                0 0 0 3em rgba($transparent, 0.3),
+                0 0 0 5em rgba($transparent, 0.3),
+                0 0 0 8em rgba($transparent, 0);
+  }
+}
