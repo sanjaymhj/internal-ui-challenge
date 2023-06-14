@@ -29,8 +29,8 @@
 }
 
 .wallpaper {
-  width: 99vw;
-  height: 99vh;
+  //   width: 100vw;
+  height: 100svh;
 }
 .spotlight {
   top: 0;
@@ -76,7 +76,6 @@
         margin: 0 5px 0 5px;
         color: #eee;
       }
-
     }
   }
 
@@ -84,7 +83,6 @@
     .search-box {
       border-bottom-right-radius: 0px;
       border-bottom-left-radius: 0px;
-
     }
     .suggestions-container {
       border-top: #ffffff39 1px solid;
@@ -101,10 +99,10 @@
         justify-content: space-between;
         width: 100%;
         font-size: 16px;
-        
+
         margin: 3px;
         padding: 4px 0px;
-        
+
         .suggestion-content {
           // background-color: blue;
           display: flex;
@@ -112,7 +110,7 @@
           align-items: center;
           justify-content: flex-start;
         }
-        
+
         .suggestion-icon {
           display: flex;
           justify-content: center;
@@ -145,7 +143,7 @@
 
       .command-container {
         padding-right: 5px;
-      
+
         .command {
           font-size: 13px;
           line-height: 13px;
@@ -180,7 +178,6 @@
   margin: 0 5px 0 0;
 }
 
-
 .no-tag-container {
   overflow: hidden;
   display: flex;
@@ -189,10 +186,17 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  
+
   .center-icon {
-    padding: 40px 0px;
+    padding: 40px;
     border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    // background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: ripple 1.5s linear infinite;
   }
   .suggestion-title {
     font-size: 15px;
@@ -228,13 +232,14 @@
   text-decoration: underline;
 }
 
-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #ccc;
   opacity: 1; /* Firefox */
 }
 
 input:focus {
-    outline: none;
+  outline: none;
 }
 
 @keyframes logo-ripple {
@@ -248,28 +253,24 @@ input:focus {
 
 // Ripple
 $color: #ffffff39;
-$transparent : rgba(255, 255, 255, 0);
+$transparent: rgba(255, 255, 255, 0);
 
-.circle-ripple {
-  background-color: transparent;
-  border: $color 1px solid;
-  width: 1em;
-  height: 1em;
-  border-radius: 50%;
-  animation: ripple 1.5s linear infinite;
-}
+// .circle-ripple {
+//   background-color: transparent;
+//   border: $color 1px solid;
+//   // width: 1em;
+//   // height: 1em;
+//   border-radius: 50%;
+//   // animation: ripple 1.5s linear infinite;
+// }
 
 @keyframes ripple {
   0% {
-    box-shadow: 0 0 0 0 rgba($transparent, 0.3),
-                0 0 0 1em rgba($transparent, 0.3),
-                0 0 0 3em rgba($transparent, 0.3),
-                0 0 0 5em rgba($transparent, 0.3);
+    box-shadow: 0 0 0 0 rgba($transparent, 0.3), 0 0 0 1em rgba($transparent, 0.3), 0 0 0 3em rgba($transparent, 0.3),
+      0 0 0 5em rgba($transparent, 0.3);
   }
   100% {
-    box-shadow: 0 0 0 1em rgba($transparent, 0.3),
-                0 0 0 3em rgba($transparent, 0.3),
-                0 0 0 5em rgba($transparent, 0.3),
-                0 0 0 8em rgba($transparent, 0);
+    box-shadow: 0 0 0 1em rgba($transparent, 0.3), 0 0 0 3em rgba($transparent, 0.3), 0 0 0 5em rgba($transparent, 0.3),
+      0 0 0 8em rgba($transparent, 0);
   }
 }
