@@ -9,6 +9,10 @@ import './reset.scss';
 
 const router = createBrowserRouter([
   {
+    path: '/',
+    element: <WeekOne />,
+  },
+  {
     path: '/week-one',
     element: <WeekOne />,
   },
@@ -16,10 +20,6 @@ const router = createBrowserRouter([
     path: '/week-two',
     element: <WeekTwo />,
   },
-  // {
-  //   path: '/week-two',
-  //   element: <WeekTwo />,
-  // },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
