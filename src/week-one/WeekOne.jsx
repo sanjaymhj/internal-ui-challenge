@@ -5,16 +5,15 @@ import { CgHashtag } from 'react-icons/cg';
 import { useRef, useState, useEffect } from 'react';
 import { FiArrowUp, FiArrowDown, FiArrowLeft } from 'react-icons/fi';
 
-import './App.scss';
-import { KeyboardKey, useKeyPress } from './hooks/useKeyDown';
-import wallpaper from './assets/wallpaper.jpg';
+import './WeekOne.scss';
+import { KeyboardKey, useKeyPress } from '../hooks/useKeyDown';
 
 const NO_TAG_TEXT = 'untitled';
 
 const SUGGESTIONS = 'SUGGESTIONS';
 const NO_TAG = 'NO_TAG';
 
-function App() {
+function WeekOne() {
   const [focused, setFocused] = useState(true);
   const [inputValue, setInputValue] = useState('');
   const [suggestionView, setSuggestionView] = useState(SUGGESTIONS);
@@ -40,7 +39,7 @@ function App() {
 
   return (
     focused && (
-      <div onKeyDown={handleKeyDown}>
+      <div className={'main-container'} onKeyDown={handleKeyDown}>
         {/* <img className="wallpaper" src={wallpaper} /> */}
         <div className={'spotlight'}>
           <div className={`search-box-container ${focused ? 'search-focused' : null}`}>
@@ -165,4 +164,4 @@ function App() {
   );
 }
 
-export default App;
+export { WeekOne };
