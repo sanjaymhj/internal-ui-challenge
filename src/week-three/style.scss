@@ -9,9 +9,20 @@
   flex-flow: column nowrap;
 
   font-family: 'League Spartan', sans-serif;
+
+  .title-container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2em;
+  }
   .title {
     font-size: 3em;
     display: block;
+  }
+  .sub-title {
+    font-size: 1em;
   }
 
   .switch {
