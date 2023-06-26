@@ -1,0 +1,85 @@
+.week-three {
+  height: 100vh;
+  width: 100vw;
+  // background-color: #aeda;
+  background-color: #aaaaaa;
+  justify-content: space-evenly;
+  align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+
+  font-family: 'League Spartan', sans-serif;
+  .title {
+    font-size: 3em;
+    display: block;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 35px;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #454545;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: '';
+    height: 25px;
+    width: 25px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+
+    // How to create path using Figma
+    // Step 1: Create 3 perfect circle with desired radius
+    // Step 2: Select 2 circle and click on boolean operation, use intersection, place circle to get desired pointed oval shape[preferably at 45°].
+    // Step 3: Place 3rd circle at 0,0 position, drag intersection to get moon shape(overlapped state)
+    // Step 4: Select moon shape and click on boolean operation, use difference operation, to get desired moon shape. Gives moon shape.
+    // Step 5: Select moon shape and copy svg. Use SVG path to clip-path property.
+
+    clip-path: path(
+      'M8.43732 0.675038C3.52811 2.36132 0 7.01864 0 12.5C0 19.4036 5.59644 25 12.5 25C17.4619 25 21.7486 22.1089 23.7674 17.9193C23.7015 18.0559 23.6333 18.1911 23.5627 18.325C22.2889 18.7625 20.9222 19 19.5 19C12.5964 19 7 13.4036 7 6.5C7 4.39656 7.51955 2.41446 8.43732 0.675038Z'
+    );
+    transition-property: all;
+  }
+
+  input:checked + .slider:before {
+    // Based on where to place checked state, depends on width of .switch, .slider, .slider's positioning(left or right)
+    // eg: if .switch width is 60px, .slider width is 25px, .slider's left is 5, then translateX(25px) will place checked state at right side.
+    -webkit-transform: translateX(25px);
+    -ms-transform: translateX(25px);
+    transform: translateX(25px);
+    clip-path: circle(50% at 50% 50%);
+    background-color: #fcff58;
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 26px;
+    border: 2px solid white;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+}

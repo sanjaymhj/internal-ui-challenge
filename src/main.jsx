@@ -6,6 +6,7 @@ import { WeekOne } from './week-one';
 import { WeekTwo } from './week-two';
 
 import './reset.scss';
+import { WeekThree } from './week-three';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: '/week-two',
     element: <WeekTwo />,
+  },
+  {
+    path: '/week-three',
+    element: <WeekThree />,
   },
 ]);
 
