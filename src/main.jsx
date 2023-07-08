@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import { WeekOne } from './week-one';
-import { WeekTwo } from './week-two';
+import { WeekOne } from './week-1';
+import { WeekTwo } from './week-2';
+import { WeekThree } from './week-3';
+import { WeekFive } from './week-5';
 
 import './reset.scss';
-import { WeekThree } from './week-three';
 
 const router = createBrowserRouter([
   {
@@ -14,16 +15,20 @@ const router = createBrowserRouter([
     element: <WeekOne />,
   },
   {
-    path: '/week-one',
+    path: '/week-1',
     element: <WeekOne />,
   },
   {
-    path: '/week-two',
+    path: '/week-2',
     element: <WeekTwo />,
   },
   {
-    path: '/week-three',
+    path: '/week-3',
     element: <WeekThree />,
+  },
+  {
+    path: '/week-5',
+    element: <WeekFive />,
   },
 ]);
 
