@@ -1,6 +1,7 @@
 import React from 'react';
 
-import './style.scss';
+import './Accordion/style.scss';
+import Accordion from './Accordion/Accordion';
 
 const WeekFive = () => {
   return (
@@ -10,41 +11,16 @@ const WeekFive = () => {
         <h2 className="sub-title">2023-Jul-08</h2>
       </div>
 
-      <div className='challenge'>
-        <dialog className="accordion-container">
-          <div className="header">
-            <h2>The Barebones Of An Accordion</h2>
-            <h3>Highlighting important details of the section and revealing more details upon a tap or click, if necessary.</h3>
-          </div>
-          <div className='body'>
-            <section>
-              <div className='body-title-container'>
-                <span className='body-title'>
-                  When and how it should be used?
-                </span>
-                <span className='body-icon'>
-                  +
-                </span>
-              </div>
-            </section>
-            <section>
-              <div className='body-title-container'>
-                <span className='body-title'>
-                  What's an accordion?
-                </span>
-                <span className='body-icon'>
-                  -
-                </span>
-              </div>
-              <div className='body-container'>
-                <span className='body'>
-                  The accordion is a graphical control element comprising a vertically stacked list of items, such as tables or thumbnails. An accordion is similar in purpose to a tabbed interface, a list of items where exactly on item is expanded into a panel.
-                </span>
-                <button>Read more</button>
-              </div>
-            </section>
-          </div>
-        </dialog>
+      <div className="challenge">
+        <Accordion />
+        <div className="background">
+          <svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="128" cy="100" r="100" fill="#e1e1e199" />
+            <circle cx="210" cy="94" r="78" fill="#e1e1e199" />
+            <circle cx="600" cy="328" r="100" fill="#D9D9D999" />
+            <circle cx="640" cy="428" r="60" fill="#D9D9D999" />
+          </svg>
+        </div>
       </div>
     </div>
   );
